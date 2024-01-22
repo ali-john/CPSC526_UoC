@@ -15,14 +15,15 @@ def client_program():
 
     message = input(" -> ")  
 
-    while message.lower().strip() != 'bye':
+    while message.lower().strip() != 'close':
         client_socket.send(message.encode())  
         data = client_socket.recv(1024).decode()  
 
         print('Received from server: ' + data)  
 
-        message = input(" -> ")  
+        message = input(" -> ")
 
+    client_socket.send(message.encode())
     client_socket.close()  
 
 
